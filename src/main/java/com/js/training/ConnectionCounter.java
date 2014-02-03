@@ -19,7 +19,7 @@ import org.atmosphere.cpr.Broadcaster;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@ManagedService(path = "/connect", atmosphereConfig = MAX_INACTIVE + "=120000")
+@ManagedService(path = "/connect")
 public class ConnectionCounter {
 
 	private final Logger logger = LoggerFactory

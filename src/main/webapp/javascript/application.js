@@ -18,7 +18,7 @@ var Subscribe = (function(){
             trackMessageLength : true,
             reconnectInterval : 5000,
             enableXDR: true,
-            timeout : 60000 };
+            timeout : 60*90*1000 };
         request.onClientTimeout = function(r) {
             setTimeout(function (){
                 subSocket = socket.subscribe(request);
