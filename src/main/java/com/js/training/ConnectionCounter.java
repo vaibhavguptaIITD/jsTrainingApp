@@ -4,9 +4,11 @@ import static org.atmosphere.cpr.ApplicationConfig.MAX_INACTIVE;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.atmosphere.config.service.Disconnect;
 import org.atmosphere.config.service.ManagedService;
@@ -23,27 +25,17 @@ public class ConnectionCounter {
 	private final Logger logger = LoggerFactory
 			.getLogger(ConnectionCounter.class);
 
-	private static final Map<String, Integer> connections = new HashMap<String, Integer>();
-	
+	private static final Map<String, Set<String>> connectionsWithUUID = new HashMap<String, Set<String>>();
+
 	private static final String TOTAL_KEY = "total";
 
-	@Ready(encoders = {JacksonEncoder.class})
-	public List<Message> onReady(final AtmosphereResource r) {
+	@Ready
+	public void onReady(final AtmosphereResource r) {
 		logger.info("Browser {} connected.", r.uuid());
-		Integer totalConnections = connections.get(TOTAL_KEY);
-		if (totalConnections == null) {
-			totalConnections = 0;
-		}
-		connections.put(TOTAL_KEY, ++totalConnections);
-		return getMessagesList(connections);
-	}
-
-	private List<Message> getMessagesList(Map<String, Integer> connections2) {
-		List<Message> messages = new ArrayList<Message>();
-		for(Entry<String, Integer> entry : connections.entrySet()){
-			messages.add(new Message(entry.getKey(), entry.getValue()));
-		}
-		return messages;
+		putResourceInConnection(TOTAL_KEY, r.uuid());
+		Broadcaster b = r.getBroadcaster();
+		b.broadcast(new JacksonEncoder()
+				.encode(getTotalConnectionMessageList()));
 	}
 
 	/**
@@ -54,30 +46,61 @@ public class ConnectionCounter {
 	 */
 	@Disconnect
 	public void onDisconnect(AtmosphereResourceEvent event) {
+		String uuid = event.getResource().uuid();
 		if (event.isCancelled()) {
-			logger.info("Browser {} unexpectedly disconnected", event
-					.getResource().uuid());
+			logger.info("Browser {} unexpectedly disconnected", uuid);
 		} else if (event.isClosedByClient()) {
-			logger.info("Browser {} closed the connection", event.getResource()
-					.uuid());
+			logger.info("Browser {} closed the connection", uuid);
 		}
 		Broadcaster b = event.broadcaster();
-		Integer totalConnections = connections.get(TOTAL_KEY);
-		connections.put(TOTAL_KEY, --totalConnections);
-		b.broadcast(new JacksonEncoder().encode(getMessagesList(connections)));
+		removeResourceFromAllConnections(uuid);
+		b.broadcast(new JacksonEncoder()
+				.encode(getTotalConnectionMessageList()));
+	}
+
+	@org.atmosphere.config.service.Message(encoders = { JacksonEncoder.class }, decoders = { JacksonDecoder.class })
+	public List<Message> onMessage(AtmosphereResource r, Message message) {
+		String connectionID = message.getId();
+		String uuid = r.uuid();
+		putResourceInConnection(connectionID, uuid);
+		return getConnectionMessageList(connectionID);
 	}
 	
-	@org.atmosphere.config.service.Message(encoders = {JacksonEncoder.class}, decoders = {JacksonDecoder.class})
-	public List<Message> onMessage(Message message){
-		String id = message.getId();
-		Integer totalConnections = connections.get(id);
-		if(totalConnections == null){
-			totalConnections = 0;
+	private void putResourceInConnection(String connectionID, String uuid) {
+		Set<String> uuids = connectionsWithUUID.get(connectionID);
+		if (uuids == null) {
+			uuids = new HashSet<String>();
+			connectionsWithUUID.put(connectionID, uuids);
 		}
-		connections.put(id, ++totalConnections);
-		Map<String, Integer> messageMap = new HashMap<String, Integer>();
-		messageMap.put(id, totalConnections);
-		return getMessagesList(messageMap);
+		uuids.add(uuid);
+	}
+
+	private void removeResourceFromConnection(String connectionID, String uuid) {
+		Set<String> uuids = connectionsWithUUID.get(connectionID);
+		uuids.remove(uuid);
+	}
+
+	private List<Message> getTotalConnectionMessageList() {
+		List<Message> messages = new ArrayList<Message>();
+		for (Entry<String, Set<String>> connection : connectionsWithUUID
+				.entrySet()) {
+			messages.add(new Message(connection.getKey(), connection.getValue()
+					.size()));
+		}
+		return messages;
+	}
+
+	private List<Message> getConnectionMessageList(String connectionID) {
+		List<Message> messages = new ArrayList<Message>();
+		messages.add(new Message(connectionID, connectionsWithUUID.get(
+				connectionID).size()));
+		return messages;
+	}
+	
+	private void removeResourceFromAllConnections(String uuid) {
+		for (String connection : connectionsWithUUID.keySet()) {
+			removeResourceFromConnection(connection, uuid);
+		}
 	}
 
 }
