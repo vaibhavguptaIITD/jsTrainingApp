@@ -1,0 +1,9 @@
+body {
+    padding-top: 50px;
+}
+.console{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 200px;
+}

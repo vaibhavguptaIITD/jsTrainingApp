@@ -1,9 +1,6 @@
 $(function () {
-    "use strict";
     Subscribe.connectMain();
-    $("#connect1_btn").click(function(){
-    	Subscribe.submitFirst();
-    });
+    CodeEditor.init();
 });
 
 var Subscribe = (function(){
@@ -11,7 +8,7 @@ var Subscribe = (function(){
 	transport = 'websocket',
 	subSocket;
     function connect(){
-        var request = { url: document.location.toString() + "connect",
+        var request = { url: "/" + GlobalVars["context"] + "connect",
             contentType : "application/json",
             logLevel : 'debug',
             transport : transport ,
@@ -34,7 +31,7 @@ var Subscribe = (function(){
             $.each(json, function(i, elem){
             	var messageId = elem.id,
                 totalConnections = elem.connections;
-                $("._"+messageId+"Count").html(totalConnections);
+                $("#"+messageId+"Count").html(totalConnections);
             });
         };
         subSocket = socket.subscribe(request);
@@ -44,8 +41,59 @@ var Subscribe = (function(){
 		connectMain : function(){
 			connect();
 		},
-		submitFirst : function(){
-			subSocket.push(atmosphere.util.stringifyJSON({id: '1'}));
+		submit : function(section){
+			subSocket.push(atmosphere.util.stringifyJSON({id: section}));
 		}
 	}
 })();
+
+var CodeEditor = (function(){
+	var editor,
+	logEditor = $("#log-js"),
+	runButton = $("#run"),
+	submitButton = $("#submit"),
+	nextButton = $("#next")
+	
+	function initCodeEditor(){
+		editor = CodeMirror.fromTextArea(document.getElementById("code-js"), {
+			lineNumbers : true,
+			mode : "javascript",
+			gutters : [ "CodeMirror-lint-markers" ],
+			lint : true
+		});
+	}
+	
+	function initRunButton(){
+		runButton.click(function(){
+			eval(editor.getValue());
+		});
+	}
+	
+	function registerLogFunction(){
+		window.log = function(statement){
+			var evalStatement = eval(statement);
+			logEditor.append("<p>"+evalStatement+"</p>");
+		}
+	}
+	
+	function initSubmitButton(){
+		submitButton.click(function(){
+			var section = submitButton.data("section");
+			Subscribe.submit(section);
+			submitButton.hide();
+			nextButton.show();
+		});
+	}
+	
+	return {
+		init : function(){
+			initCodeEditor();
+			initRunButton();
+			initSubmitButton();
+			registerLogFunction();
+		}
+	}
+})();
+
+
+
