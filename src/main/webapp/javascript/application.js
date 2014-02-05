@@ -1,6 +1,8 @@
 $(function () {
     Subscribe.connectMain();
     CodeEditor.init();
+    $('._connections').tooltip();
+
 });
 
 var Subscribe = (function(){
@@ -59,19 +61,31 @@ var CodeEditor = (function(){
 			lineNumbers : true,
 			mode : "javascript",
 			gutters : [ "CodeMirror-lint-markers" ],
-			lint : true
+			lint : true,
+			theme:"solarized dark"
 		});
 	}
 	
 	function initRunButton(){
 		runButton.click(function(){
-			eval(editor.getValue());
+			try{
+				eval(editor.getValue());
+			}
+			catch(err){
+				log("'"+err.message+"'");
+			}
 		});
 	}
 	
 	function registerLogFunction(){
 		window.log = function(statement){
-			var evalStatement = eval(statement);
+			var evalStatement;
+			if(typeof statement == "string"){
+				evalStatement = statement;
+			}
+			else{
+				evalStatement = eval(statement);
+			}
 			logEditor.append("<p>"+evalStatement+"</p>");
 		}
 	}

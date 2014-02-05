@@ -7,6 +7,7 @@
 <script src="${pageContext.request.contextPath}/javascript/lib/codemirror/addon/json-lint.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/javascript/lib/jquery.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/javascript/atmosphere.js"  type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/javascript/bootstrap.min.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/javascript/application.js" type="text/javascript"></script>
 <script type="text/javascript">
 var GlobalVars = {};
