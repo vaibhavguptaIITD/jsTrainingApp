@@ -54,7 +54,8 @@ var CodeEditor = (function(){
 	logEditor = $("#log-js"),
 	runButton = $("#run"),
 	submitButton = $("#submit"),
-	nextButton = $("#next")
+	nextButton = $("#next"),
+	clearButton = $("#clear");
 	
 	function initCodeEditor(){
 		editor = CodeMirror.fromTextArea(document.getElementById("code-js"), {
@@ -74,6 +75,12 @@ var CodeEditor = (function(){
 			catch(err){
 				log("'"+err.message+"'");
 			}
+		});
+	}
+	
+	function initClearButton(){
+		clearButton.click(function(){
+			logEditor.empty();
 		});
 	}
 	
@@ -104,6 +111,7 @@ var CodeEditor = (function(){
 			initCodeEditor();
 			initRunButton();
 			initSubmitButton();
+			initClearButton();
 			registerLogFunction();
 		}
 	}

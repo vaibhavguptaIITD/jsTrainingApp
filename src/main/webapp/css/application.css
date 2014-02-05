@@ -29,3 +29,11 @@ body {
 	height:550px;
 	overflow-y:scroll;
 }
+
+.console{
+	z-index: 1000;
+}
+
+.exercisePanel{
+	padding: 15px;
+}

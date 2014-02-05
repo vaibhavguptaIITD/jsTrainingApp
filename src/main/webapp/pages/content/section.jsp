@@ -41,8 +41,8 @@
 </textarea>
 				</div>
 				<div class="console">
-					<pre id="log-js">
-					</pre>
+					<pre id="log-js"></pre>
+					<button type="button" class="btn btn-primary" id="clear">Clear Console</button>
 				</div>
 				<div class="buttonPanel">
 					<form action="${nextSection}" method="GET">
