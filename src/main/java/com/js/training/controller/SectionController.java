@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("section")
 public class SectionController {
 	
-	private static final Integer TOTAL_SECTIONS = 3;
+	private static final Integer TOTAL_SECTIONS = 7;
 	
 	@RequestMapping("{section}")
 	public ModelAndView getSection(@PathVariable Integer section){
