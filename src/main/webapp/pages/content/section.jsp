@@ -36,8 +36,7 @@
 			</div>
 			<div class="col-md-9">
 				<div class="codeEditor">
-<textarea id="code-js" class="codeArea">
-<jsp:include page="/pages/content/sections/${section}/code.jsp" />
+<textarea id="code-js" class="codeArea"><jsp:include page="/pages/content/sections/${section}/code.jsp" />
 </textarea>
 				</div>
 				<div class="console">
