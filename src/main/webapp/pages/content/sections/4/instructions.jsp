@@ -1,38 +1,36 @@
 <div class="panel panel-default instructions-panel">
 	<div class="panel-heading">
-		<h3 class="panel-title">Functions</h3>
+		<h3 class="panel-title">Loops</h3>
 	</div>
 	<div class="panel-body">
-		<p>Functions are used to encapsulate reusable chunk of code.</p>
-		<h4>Function declaration</h4>
+		<p>Loops are used to repeat a set of lines of code until some condition is met.</p>
+		<h4>Syntax</h4>
+<pre>
+for (var i = 1; i < 11; i = i + 1) {
+    /* your code here */;
+}
+</pre>
+		<p>
+		Every <code>for</code> loop makes use of a counting variable. Here, our variable is called <code>i</code> (but it can have any name). 
+		When the for loop executes the code in the code block - the bit between { } - it does so by starting off where i = 1.
+		</p>
+		<h4>Breaking out of for loop</h4>
+		<p>
+			To prematurely quit a <code>for</code> loop, you can:
+		</p>
 		<ul>
 			<li>
-				Use <code>function</code> keyword
+				Use <code>break</code>
 			</li>
 			<li>
-				<code>var myFunction = function(args){...}</code>
-			</li>
-			<li>
-				<code>function myFunction(args){...}</code>
+				In case the loop is defined in a function, use <code>return</code> to get out of the main function itself.
 			</li>
 		</ul>
-		<h4>Difference</h4>
-		<p>The former is subjected to <b>variable hoisting</b> which implies that you cannot call the function before the declaration.</p>
-		<h4>Invocation</h4>
-		<p>A function is invoked as follows:</p>
-		<pre>myFunction(10, 12)</pre>
-		<h4>Arguments</h4>
-		<p>A function in javascript can take variable number of arguments. Since the number of arguments a function takes are not fixed, 
-		<b>overloading</b> is tricky in javascript. Functions get <b>overriden</b> instead.</p>
-		<p>We can achieve a semblance of overloading by using an implicit variable <code>arguments</code> 
-		</p>
-		<h4>Function Returns!!!</h4>
-		<p>A function might return a result of computation by using the <code>return</code> keyword</p>
 	</div>
 	<div class="bg-info exercisePanel">
 			<h4>Exercise</h4>
 			<p>
-				Create a function <code>sum</code> which returns the sum of arguments.
+				Write a for loop to print your name 10 times. 
 			</p>
 		</div>
 </div>
