@@ -1,8 +1,6 @@
-//Create a function "sum" which returns the sum of arguments
-function sum(){
-	//Your code here
+var understand = true;
+
+while(  ){
+	log("I'm learning while loops!");
+	understand = false; //Don't alter this, will run into an infinite loop.
 }
-
-log(sum(1,2,3)); //Should return 6
-
-log(sum(1,2));	//Should return 3 

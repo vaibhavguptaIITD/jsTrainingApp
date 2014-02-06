@@ -4,7 +4,7 @@
 	</div>
 	<div class="panel-body">
 		<p>Loops are used to repeat a set of lines of code until some condition is met.</p>
-		<h4>Syntax</h4>
+		<h4><code>for</code></h4>
 <pre>
 for (var i = 1; i < 11; i = i + 1) {
     /* your code here */;
