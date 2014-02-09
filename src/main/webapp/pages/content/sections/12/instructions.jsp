@@ -5,36 +5,20 @@
 	<div class="panel-body">
 		<h4>Objects</h4>
 		<h5>
-			Creating a new object
+			Add keys to objects
 		</h5>
-		<p>There are two ways to create an object</p>
-		<ul>
-			<li>
-				Using <b>object literal notation</b>
-				<h6>Syntax</h6>
-<pre>
-var myObj = {
-    type: 'fancy',
-    disposition: 'sunny'
-};
-
-var emptyObj = {};
-</pre>
-			</li>
-			<li>
-				Using <b>object constructor</b>
-				<h6>Syntax</h6>
-<pre>
-var myObj = new Object();
-</pre>
-			</li>
-		</ul>
-		<h5>Adding keys to object</h5>
 <pre>
 myObj["name"] = "Charlie";
 myObj.name = "Charlie";
 </pre>
-<p>The former syntax allows us to add dynamic keys</p>
+		<p>The former syntax allows us to add dynamic keys</p>
+		<h5>List out keys</h5>
+		<p><code>for-in</code> is used to loop over properties of an object</p>
+		<pre>
+for(var property in obj) {
+  //code here
+}
+		</pre>
 	</div>
 	<div class="bg-info exercisePanel">
 		<h4>Exercise</h4>
@@ -50,6 +34,6 @@ myObj.name = "Charlie";
 			</li>
 		</ul>
 		<p>Create an object <code>calendar</code> with keys as entries of <code>month</code> and values as entries of <code>days</code>
-		<p>Log the object to see results.(Hint: use <code>JSON.stringify(calendar)</code> to see an object's content)</p>
+		<p>Log all the keys of <code>calendar</code> using <code>for-in</code> loop</p>
 	</div>
 </div>

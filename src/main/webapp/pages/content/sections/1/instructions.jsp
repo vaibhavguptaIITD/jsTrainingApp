@@ -3,7 +3,6 @@
 		<h3 class="panel-title">Data types</h3>
 	</div>
 	<div class="panel-body">
-		<h3>Data types</h3>
 		<p>Data comes in various types in javascript. As in any other
 			programming language javascript comes with following datatypes:
 		<ul>

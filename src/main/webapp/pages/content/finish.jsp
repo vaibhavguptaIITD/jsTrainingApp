@@ -26,20 +26,12 @@
 	<div class="jumbotron">
 		<div class="container">
 			<div class="center-block">
-				<h1 style="margin-left: 300px;">Javascript 101</h1>
-			</div>
-			<div class="pull-right">
-				<h2>Vaibhav Gupta</h2>
+				<h1 style="margin-left: 400px;">Thanks</h1>
 			</div>
 			<div class="clearfix"></div>
 	  	</div>
 	</div>
-	<div class="homePageButtons pull-right">
-		<form action="${pageContext.request.contextPath}/section/0" method="GET">
-			<button type="submit" class="btn btn-primary">Start</button>
-		</form>
-	</div>
-	<div class="clearfix"></div>
+	
 	<jsp:include page="/pages/content/includes/_script.jsp"/>
 </body>
 </html>

@@ -14,11 +14,16 @@
 		they can be strings and variables.</p>
 		<h5>Syntax</h5>
 <pre>
+//Object literal
 var myObject = {
     key: value,
     key: value,
     key: value
-};	
+};
+
+//Constructor
+var myObject = new Object();
+myObject.key = value;	
 </pre>
 		<h5>this</h5>
 		<p>An object's method can access the object using <code>this</code>.</p>
@@ -30,7 +35,7 @@ var myObject = {
 				Add a method <code>info</code> which concats <code>breed</code>, a space and <code>color</code> and logs it.
 			</p>
 			<p>
-				Call the method using <code>dog.info</code> to see the results.
+				Call the method using <code>dog.info()</code> to see the results.
 			</p>
 		</div>
 </div>
