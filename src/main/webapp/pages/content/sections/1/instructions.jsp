@@ -5,11 +5,12 @@
 	<div class="panel-body">
 		<p>Data comes in various types in javascript. As in any other
 			programming language javascript comes with following datatypes:
+		</p>
 		<ul>
-			<li>Numbers
+			<li><b>Numbers</b>
 				<p>Numbers are quantities. You can do math with them.</p>
 			</li>
-			<li>Strings
+			<li><b>Strings</b>
 				<p>
 					Strings are sequences of characters, like the letters
 					<code>a-z</code>
@@ -23,7 +24,7 @@
 					programs.
 				</p>
 			</li>
-			<li>Boolean
+			<li><b>Boolean</b>
 				<p>
 					A boolean can have only two values, <code>true</code> or <code>false</code>. You can use them in your code by making statements that evaluate to <code>true</code> or <code>false</code>.
 				</p>
@@ -39,6 +40,5 @@
 				</p>
 			</li>
 		</ul>
-		</p>
 	</div>
 </div>

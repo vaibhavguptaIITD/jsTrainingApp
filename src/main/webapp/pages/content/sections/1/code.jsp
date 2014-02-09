@@ -1,5 +1,5 @@
 //number
-log(typeof (4 + 5));
+log(typeof 4);
 
 //string
 log(typeof "Vaibhav Gupta");

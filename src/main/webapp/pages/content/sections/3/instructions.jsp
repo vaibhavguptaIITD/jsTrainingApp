@@ -1,10 +1,27 @@
 <div class="panel panel-default instructions-panel">
 	<div class="panel-heading">
-		<h3 class="panel-title">Comparisons</h3>
+		<h3 class="panel-title">Operators</h3>
 	</div>
 	<div class="panel-body">
-		<h3>Comparison Operators</h3>
-		<h4>List of comparison operators</h4>
+		<h4>Arithmetic Operators</h4>
+		<ul>
+			<li>
+				<code>+</code> Addition
+			</li>
+			<li>
+				<code>-</code> Subtraction
+			</li>
+			<li>
+				<code>*</code> Multiplication
+			</li>
+			<li>
+				<code>/</code> Division
+			</li>
+			<li>
+				<code>%</code> Mod
+			</li>
+		</ul>
+		<h4>Comparison Operators</h4>
 		<ul>
 			<li>
 				<code>></code> Greater than

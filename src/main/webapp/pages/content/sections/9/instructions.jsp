@@ -30,10 +30,6 @@ myArray[1] = "item2";
 var myArray1 = new Array("item1","item2");
 
 </pre>
-		<h5>Syntax</h5>
-		<pre>
-var arrayName = [data, data, data];
-		</pre>
 		<h5>Access item</h5>
 		<p>Items in array are access using <code>[]</code></p>
 		<h5>Example</h5>
@@ -59,7 +55,10 @@ names[1];
 			<code>push()</code> : Adds new elements to the end of an array, and returns the new length
 			</li>
 			<li>
-			And many more. Refer to <a href="http://www.w3schools.com/jsref/jsref_obj_array.asp">docs</a>
+			<code>concat()</code> : Joins two or more arrays, and returns a copy of the joined arrays
+			</li>
+			<li>
+			And many more. Refer to <a href="http://www.w3schools.com/jsref/jsref_obj_array.asp" target="_blank">docs</a>
 			</li>
 		</ul>
 	</div>

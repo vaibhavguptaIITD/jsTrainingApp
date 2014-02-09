@@ -15,12 +15,6 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Javascript</a>
 			</div>
-			<div class="navbar-right">
-				<span class="badge _connections" data-toggle="tooltip" data-placement="bottom" title="Current connections/Total Connections">
-					<span id="${section}Count">0</span>/<span id="totalCount">0</span>	
-				</span>
-				
-			</div>
 		</div>
 	</div>
 	<div class="jumbotron">
@@ -40,6 +34,5 @@
 		</form>
 	</div>
 	<div class="clearfix"></div>
-	<jsp:include page="/pages/content/includes/_script.jsp"/>
 </body>
 </html>
