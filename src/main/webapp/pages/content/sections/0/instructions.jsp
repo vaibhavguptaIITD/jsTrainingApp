@@ -3,6 +3,31 @@
 		<h3 class="panel-title">Introduction</h3>
 	</div>
 	<div class="panel-body">
+		<h4>Agenda</h4>
+		<p>We are discussing basics of javascript</p>
+		<ul>
+			<li>
+				<b>Datatypes</b>
+			</li>
+			<li>
+				<b>Operators</b>
+			</li>
+			<li>
+				<b>Functions</b>
+			</li>
+			<li>
+				<b>Loops</b>
+			</li>
+			<li>
+				<b>Control Flow</b>
+			</li>
+			<li>
+				<b>Data structures</b> : Array and Object
+			</li>
+			<li>
+				<b>Object Oriented Javascript</b>
+			</li>
+		</ul>
 		<h4>Instructions</h4>
 		<ul>
 			<li>
