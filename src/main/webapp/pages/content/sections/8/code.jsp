@@ -11,5 +11,5 @@ switch(color) {
   //Add your case here!
   
   default:
-    console.log("I don't think that's a primary color!");
+    log("I don't think that's a primary color!");
 }
