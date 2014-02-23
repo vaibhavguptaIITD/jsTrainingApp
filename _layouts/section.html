@@ -26,7 +26,7 @@ layout: default
           <button type="button" class="btn btn-primary" id="clear">Clear Console</button>
         </div>
         <div class="buttonPanel">
-        	{% if page.section == totalSection %}
+      {% if page.section == totalSection %}
 			<form action="{{ site.url }}/thanks" method="GET">
 			{% else %}
 			<form action="{{ site.url }}/section/{{ page.section | plus : 1 }}" method="GET">
