@@ -1,0 +1,43 @@
+body {
+    padding-top: 50px;
+    background-color: #002B36;
+}
+.console{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 200px;
+	width: 350px;
+}
+
+
+.CodeMirror{
+	height: 550px !important;
+}
+
+
+.buttonPanel {
+  margin-left: 68px;
+  margin-top: 10px;
+}
+
+.console pre {
+	height: 200px;
+}
+
+.instructions-panel{
+	height:550px;
+	overflow-y:scroll;
+}
+
+.console{
+	z-index: 1000;
+}
+
+.exercisePanel{
+	padding: 15px;
+}
+
+.homePageButtons{
+	padding: 30px 65px 30px 30px;
+}

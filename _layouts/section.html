@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+{% assign totalSection = 17 %}
+{% assign instructions = page.section | prepend:'section/' | append: '/instructions.html' %}
+{% assign code = page.section | prepend:'section/' | append: '/code.html' %}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="instructions">
+          <div class="row body">
+            <div class="col-md-12">
+              {% include {{instructions}} %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="codeEditor">
+<textarea id="code-js" class="codeArea">{% include {{code}} %}
+</textarea>
+        </div>
+        <div class="console">
+          <pre id="log-js"></pre>
+          <button type="button" class="btn btn-primary" id="clear">Clear Console</button>
+        </div>
+        <div class="buttonPanel">
+        	{% if page.section == totalSection %}
+			<form action="/thanks" method="GET">
+			{% else %}
+			<form action="/section/{{ page.section | plus : 1 }}" method="GET">
+			{% endif %}
+            <button type="button" class="btn btn-primary" id="run">Run</button>
+            <button type="button" class="btn btn-success" id="submit" data-section="{{ page.section }}">Submit</button>
+            <button type="submit" class="btn btn-info" id="next" style="display:none;">Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
