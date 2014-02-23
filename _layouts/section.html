@@ -27,9 +27,9 @@ layout: default
         </div>
         <div class="buttonPanel">
         	{% if page.section == totalSection %}
-			<form action="/thanks" method="GET">
+			<form action="{{ site.url }}/thanks" method="GET">
 			{% else %}
-			<form action="/section/{{ page.section | plus : 1 }}" method="GET">
+			<form action="{{ site.url }}/section/{{ page.section | plus : 1 }}" method="GET">
 			{% endif %}
             <button type="button" class="btn btn-primary" id="run">Run</button>
             <button type="button" class="btn btn-success" id="submit" data-section="{{ page.section }}">Submit</button>
